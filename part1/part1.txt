@@ -1,0 +1,12 @@
+-	Asynchronous programming is a technique that enables your program to start a potentially long-running task and still be able to be responsive to other events while that task runs, rather than having to wait until that task has finished.
+-	Making HTTP requests using fetch()
+-	Accessing a user's camera or microphone using getUserMedia()
+-	Asking a user to select files using showOpenFilePicker()
+-	This is the basic problem with long-running synchronous functions. What we need is a way for our program to:
+    1.	Start a long-running operation by calling a function.
+    2.	Have that function start the operation and return immediately, so that our program can still be responsive to other events.
+    3.	Notify us with the result of the operation when it eventually completes.
+-	Using synchronous functions, if it takes a long time, you cannot do anything else on the page until it finishes running.
+
+-	Asynchronous functions work like event handlers. An event handler is a type of callback.
+-	Nested callbacks (calling callbacks inside callbacks)= callback hell aka pyramid of doom, don’t do this
