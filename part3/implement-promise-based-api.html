@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Asynchronous JS Part 3 Practice</title>
+</head>
+<body>
+    <div>
+        <button id="set-alarm">Set alarm</button>
+        <div id="output"></div>
+
+
+    </div>
+</body>
+
+<script>
+//     const output = document.querySelector("#output");
+//     const button = document.querySelector("#set-alarm");
+
+//     function setAlarm() {
+//     setTimeout(() => {
+//         output.textContent = "Wake up!";
+//     }, 1000);
+//     }
+
+// button.addEventListener("click", setAlarm);
+
+//IMPLEMENT alarm():
+
+    // function alarm(person, delay) {
+    // return new Promise((resolve, reject) => {
+    //     if (delay < 0) {
+    //     throw new Error("Alarm delay must not be negative");
+    //     }
+    //     setTimeout(() => {
+    //     resolve(`Wake up, ${person}!`);
+    //     }, delay);
+    // });
+    // }
+
+    // const name = document.querySelector("#name");
+    // const delay = document.querySelector("#delay");
+    // const button = document.querySelector("#set-alarm");
+    // const output = document.querySelector("#output");
+
+    // function alarm(person, delay) {
+    // return new Promise((resolve, reject) => {
+    //     if (delay < 0) {
+    //     throw new Error("Alarm delay must not be negative");
+    //     }
+    //     setTimeout(() => {
+    //     resolve(`Wake up, ${person}!`);
+    //     }, delay);
+    // });
+    // }
+
+    // button.addEventListener("click", () => {
+    // alarm(name.value, delay.value)
+    //     .then((message) => (output.textContent = message))
+    //     .catch((error) => (output.textContent = `Couldn't set alarm: ${error}`));
+    // });
+
+//USING ASYNC AND AWAIT WITH THE alarm() API:
+
+    const name = document.querySelector("#name");
+    const delay = document.querySelector("#delay");
+    const button = document.querySelector("#set-alarm");
+    const output = document.querySelector("#output");
+
+    function alarm(person, delay) {
+    return new Promise((resolve, reject) => {
+        if (delay < 0) {
+        throw new Error("Alarm delay must not be negative");
+        }
+        setTimeout(() => {
+        resolve(`Wake up, ${person}!`);
+        }, delay);
+    });
+    }
+
+    button.addEventListener("click", async () => {
+    try {
+        const message = await alarm(name.value, delay.value);
+        output.textContent = message;
+    } catch (error) {
+        output.textContent = `Couldn't set alarm: ${error}`;
+    }
+    });
+
+</script>
+
+</html>

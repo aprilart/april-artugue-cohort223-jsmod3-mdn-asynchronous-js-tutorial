@@ -1,0 +1,54 @@
+-   Promises are the foundation of asynchronous programming in modern JavaScript. A promise is an object returned by an asynchronous function, which represents the current state of the operation. At the time the promise is returned to the caller, the operation often isn't finished, but the promise object provides methods to handle the eventual success or failure of the operation.
+-   HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+
+-   A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+-    a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function. 
+-   A Promise is in one of these states:
+
+    pending: initial state, neither fulfilled nor rejected.
+    fulfilled: meaning that the operation was completed successfully.
+    rejected: meaning that the operation failed.
+
+    pending: the promise has been created, and the asynchronous function it's associated with has not succeeded or failed yet. This is the state your promise is in when it's returned from a call to fetch(), and the request is still being made.
+    fulfilled: the asynchronous function has succeeded. When a promise is fulfilled, its then() handler is called.
+    rejected: the asynchronous function has failed. When a promise is rejected, its catch() handler is called.
+
+    pending - the initial state of most promises, it hasn't been fulfilled or rejected
+    fulfilled - the promise has been fulfilled with a fulfillment value
+    rejected - the promise has been rejected with a rejection reason (saying why the promise can't be fulfilled)
+
+-   A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+-   The global fetch() method starts the process of fetching a resource from the network, returning a promise which is fulfilled once the response is available.
+-   The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). When either of these options occur, the associated handlers queued up by a promise's then method are called. If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called.
+-   A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+-   The promise resolves to the Response object representing the response to your request.
+-   A fetch() promise only rejects when a network error is encountered (which is usually when there's a permissions issue or similar). A fetch() promise does not reject on HTTP errors (404, etc.). Instead, a then() handler must check the Response.ok and/or Response.status properties.
+
+-   With the fetch() API, once you get a Response object, you need to call another function to get the response data. 
+-   we want to get the response data as JSON, so we would call the json() method of the Response object. It turns out that json() is also asynchronous. So this is a case where we have to call two successive asynchronous functions.
+-   we add a then() handler to the promise returned by fetch(). But this time, our handler calls response.json(), and then passes a new then() handler into the promise returned by response.json().
+
+-   The promise returned by Promise.all() is:
+
+    --fulfilled when and if all the promises in the array are fulfilled. In this case, the then() handler is called with an array of all the responses, in the same order that the promises were passed into all().
+    --rejected when and if any of the promises in the array are rejected. In this case, the catch() handler is called with the error thrown by the promise that rejected.
+
+-   Sometimes, you might need any one of a set of promises to be fulfilled, and don't care which one. In that case, you want Promise.any().
+-   it is fulfilled as soon as any of the array of promises is fulfilled, or rejected if all of them are rejected.
+
+ASYNC AND AWAIT
+
+-   The async keyword gives you a simpler way to work with asynchronous promise-based code. Adding async at the start of a function makes it an async function.
+-   Inside an async function, you can use the await keyword before a call to a function that returns a promise. This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise is treated as a return value, or the rejected value is thrown.
+
+-   This enables you to write code that uses asynchronous functions but looks like synchronous code.
+-   note that you can only use await inside an async function, unless your code is in a JavaScript module. 
+-   
+
+

@@ -8,5 +8,6 @@
     3.	Notify us with the result of the operation when it eventually completes.
 -	Using synchronous functions, if it takes a long time, you cannot do anything else on the page until it finishes running.
 
--	Asynchronous functions work like event handlers. An event handler is a type of callback.
--	Nested callbacks (calling callbacks inside callbacks)= callback hell aka pyramid of doom, don’t do this
+-	Asynchronous functions work like event handlers. An event handler is a type of callback. A callback is just a function passed into another function, with the expectation that the callback will be called at the appropriate time. 
+-	Nested callbacks (calling callbacks inside callbacks)= callback hell aka pyramid of doom, don’t do this.
+-   most modern APIs don't use callbacks, instead they use the "Promise".
